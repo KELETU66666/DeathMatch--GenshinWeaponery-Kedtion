@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "genshin_weapons:items/sword_of_descension"
+  }
+}

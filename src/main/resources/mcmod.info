@@ -1,0 +1,19 @@
+[
+  {
+    "modid": "genshin_weapons",
+    "name": "DeathMatch: Genshin Weaponry Kedition",
+    "description": "Genshin? Launch!",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "Keletu66666"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": [
+    ]
+  }
+]
