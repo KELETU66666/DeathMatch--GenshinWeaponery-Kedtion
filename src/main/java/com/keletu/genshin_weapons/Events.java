@@ -53,8 +53,14 @@ public class Events {
                 playerVariables.onUpdate();
             }
 
-         //   EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-         //   ItemStack stack = player.getHeldItemMainhand();
+            EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+            ItemStack stack = player.getHeldItemMainhand();
+
+            if(stack.getItem() == CommonProxy.TheAlleyFlesh && playerVariables != null)
+            {
+                if(player.hurtTime > 0)
+                    playerVariables.ability_cd = 100;
+            }
          //
          //   if (playerVariables != null && stack.getItem() == CommonProxy.SkyriderSword && player.experienceLevel != getPlayerLevel(player) && playerVariables.skyrider_ab_dur == 0) {
          //       double s = /*1.024*/2 + 0.006 * CommonProxy.SkyriderSword.getTier(stack);
@@ -148,7 +154,7 @@ public class Events {
                 playerVariables.prototype_rancour_stack += 1;
             }
 
-            event.setAmount(event.getAmount() + (float) (event.getAmount() * playerVariables.prototype_rancour_stack * (0.04 * ((CommonProxy.PrototypeRancour.getTier(stack) +3 ) / 4))));
+            event.setAmount(event.getAmount() + event.getAmount() * (float) (playerVariables.prototype_rancour_stack * (0.04 * ((CommonProxy.PrototypeRancour.getTier(stack) +3 ) / 4))));
             playerVariables.prototype_rancour_dur = 120;
         }
 
@@ -202,8 +208,6 @@ public class Events {
         if(stack.getItem() == CommonProxy.TheAlleyFlesh && playerVariables.ability_cd == 0)
         {
             event.setAmount((event.getAmount() + (float) (event.getAmount() * 0.12 * (CommonProxy.TheAlleyFlesh.getTier(stack)+ 3) / 4)));
-            if(event.getEntityLiving() == player)
-                playerVariables.ability_cd = 100;
         }
 
         if(stack.getItem() == CommonProxy.TheBlackSword)
@@ -245,7 +249,8 @@ public class Events {
                         double dy = (player.posY + 0.5F + (player.world.rand.nextFloat() - player.world.rand.nextFloat()) * 0.75F);
                         double dz = (player.posZ + 0.5F + (player.world.rand.nextFloat() - player.world.rand.nextFloat()) * 0.75F);
 
-                        player.world.spawnParticle(EnumParticleTypes.NOTE, dx, dy, dz, 0.0D, 0.0D, 0.0D);
+                        if(!player.world.isRemote)
+                            player.world.spawnParticle(EnumParticleTypes.NOTE, dx, dy, dz, 0.0D, 0.0D, 0.0D);
                     }
                 }
                 playerVariables.the_flute_ab_stack = 0;

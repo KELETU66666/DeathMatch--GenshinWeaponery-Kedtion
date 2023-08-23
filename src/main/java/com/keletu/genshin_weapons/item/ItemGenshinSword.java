@@ -122,7 +122,7 @@ public class ItemGenshinSword extends ItemSword {
         }
         if(stack.getItem() == CommonProxy.PrototypeRancour) {
             list.add(TextFormatting.DARK_PURPLE + I18n.format("keletu.genshinweaponry.prototype_rancour.name") + " R" + getTier(stack));
-            list.add(new TextComponentString("keletu.genshinweaponry.prototype_rancour.tooltip1").getText());
+            list.add(I18n.format("keletu.genshinweaponry.prototype_rancour.tooltip1"));
             list.add(I18n.format("keletu.genshinweaponry.prototype_rancour.tooltip2"));
         }
         if(stack.getItem() == CommonProxy.BlackcliffLongsword) {
