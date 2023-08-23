@@ -1,6 +1,7 @@
 package com.keletu.genshin_weapons;
 
 import com.keletu.genshin_weapons.network.IPlayerProvider;
+import com.keletu.genshin_weapons.network.ParticleNote;
 import com.keletu.genshin_weapons.network.PlayerVariables;
 import com.keletu.genshin_weapons.proxy.CommonProxy;
 import net.minecraft.entity.Entity;
@@ -10,7 +11,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -21,6 +21,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerPickupXpEvent;
+import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -242,15 +243,19 @@ public class Events {
                 Vec3d vec3d = new Vec3d(player.posX, player.posY, player.posZ);
                 List<Entity> entities = player.getEntityWorld().getEntitiesWithinAABB(Entity.class, (new AxisAlignedBB(vec3d, vec3d)).grow(4.5D), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.getDistanceSqToCenter(new BlockPos(player.posX, player.posY, player.posZ)))).collect(Collectors.toList());
                 for (Entity entityiterator : entities) {
-                    if (entityiterator != player)
+                    if (entityiterator != player) {
                         entityiterator.attackEntityFrom(DamageSource.MAGIC, event.getAmount() * (CommonProxy.TheFlute.getTier(stack) + 3) / 4);
-                    for (int i = 0; i < 10; i++) {
-                        double dx = (player.posX + 0.5F + (player.world.rand.nextFloat() - player.world.rand.nextFloat()) * 0.75F);
-                        double dy = (player.posY + 0.5F + (player.world.rand.nextFloat() - player.world.rand.nextFloat()) * 0.75F);
-                        double dz = (player.posZ + 0.5F + (player.world.rand.nextFloat() - player.world.rand.nextFloat()) * 0.75F);
 
-                        if(!player.world.isRemote)
-                            player.world.spawnParticle(EnumParticleTypes.NOTE, dx, dy, dz, 0.0D, 0.0D, 0.0D);
+                        for (int l = 0; l < 15; l++) {
+                            double d = event.getEntity().posX + (player.world.rand.nextFloat() - 0.5D) * 6.0D;
+                            double d1 = event.getEntity().posY + (player.world.rand.nextFloat() - 0.5D) * 6.0D;
+                            double d2 = event.getEntity().posZ + (player.world.rand.nextFloat() - 0.5D) * 6.0D;
+                            double d3 = (player.world.rand.nextFloat() - 0.5D) * 0.5D;
+                            double d4 = (player.world.rand.nextFloat() - 0.5D) * 0.5D;
+                            double d5 = (player.world.rand.nextFloat() - 0.5D) * 0.5D;
+                            ParticleNote entityPurpleFX = new ParticleNote(player.world, d, d1, d2, d3, d4, d5);
+                            (FMLClientHandler.instance().getClient()).effectRenderer.addEffect(entityPurpleFX);
+                        }
                     }
                 }
                 playerVariables.the_flute_ab_stack = 0;
