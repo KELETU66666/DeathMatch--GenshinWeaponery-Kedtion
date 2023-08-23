@@ -2,8 +2,6 @@
 package com.keletu.genshin_weapons.proxy;
 
 
-import com.keletu.genshin_weapons.item.AnvilRecipe;
-import com.keletu.genshin_weapons.item.AnvilRecipeHandler;
 import com.keletu.genshin_weapons.item.ItemGenshinSword;
 import com.keletu.genshin_weapons.network.IPlayerStorage;
 import com.keletu.genshin_weapons.network.PlayerVariables;
@@ -23,7 +21,7 @@ public class CommonProxy {
     public static ItemGenshinSword BlackcliffLongsword = new ItemGenshinSword("blackcliff_longsword", 7);
     public static ItemGenshinSword HarbingerOfDawn = new ItemGenshinSword("harbinger_of_dawn", 5);
     public static ItemGenshinSword FilletBlade = new ItemGenshinSword("fillet_blade", 5);
-    public static ItemGenshinSword ColdSteel = new ItemGenshinSword("cool_steel", 5);
+    public static ItemGenshinSword ColdSteel = new ItemGenshinSword("cold_steel", 5);
     public static ItemGenshinSword SkyriderSword = new ItemGenshinSword("skyrider_sword", 4);
     public static ItemGenshinSword DarkIronSword = new ItemGenshinSword("dark_iron_sword", 5);
     public static ItemGenshinSword PrototypeRancour = new ItemGenshinSword("prototype_rancour", 7);
@@ -31,7 +29,7 @@ public class CommonProxy {
     public static ItemGenshinSword SwordOfDescension = new ItemGenshinSword("sword_of_descension", 5);
     public static ItemGenshinSword TheAlleyFlesh = new ItemGenshinSword("the_alley_flash", 8);
     public static ItemGenshinSword TheBlackSword = new ItemGenshinSword("the_black_sword", 6);
-    public static ItemGenshinSword LionsRoar = new ItemGenshinSword("Lions_Roar", 6);
+    public static ItemGenshinSword LionsRoar = new ItemGenshinSword("lions_roar", 6);
     public static ItemGenshinSword RoyalSword = new ItemGenshinSword("royal_sword", 6);
     public static ItemGenshinSword TheFlute = new ItemGenshinSword("the_flute", 6);
 
@@ -41,8 +39,6 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
-        AnvilRecipeHandler.addAnvilRecipe(TravelerHandySword, 10);
-
 
     }
 

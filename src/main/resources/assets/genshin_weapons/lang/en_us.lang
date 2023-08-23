@@ -1,7 +1,70 @@
-tooltip.hotornot.toohot=Too hot to handle!
-tooltip.hotornot.toocold=Too cold to handle!
-tooltip.hotornot.toolight=Too light to handle!
+item.blackcliff_longsword.name=Blackcliff Longsword
+item.cold_steel.name=Cold Steel
+item.dark_iron_sword.name=Dark Iron Sword
+item.favonius_sword.name=Favonius Sword
+item.fillet_blade.name=Fillet Blade
+item.harbinger_of_dawn.name=Harbinger of Dawn
+item.lions_roar.name=Lion's Roar
+item.prototype_rancour.name=Prototype Rancour
+item.royal_sword.name=Royal Sword
+item.skyrider_sword.name=Skyrider Sword [WIP]
+item.sword_of_descension.name=Sword of Descension
+item.the_alley_flash.name=The Alley Flash
+item.the_black_sword.name=The Black Sword
+item.the_flute.name=The Flute
+item.travelers_handy_sword.name=Traveler's Handy Sword
 
-item.hotornot.mitts.name=Mitts
-item.hotornot.supermitts.name=Super Mitts
-item.hotornot.mitts.tooltip=Wrong place, The gloves feel weird...
+keletu.genshinweaponry.blackcliff_longsword.name=Press the Advantage
+keletu.genshinweaponry.blackcliff_longsword.tooltip1=After defeating an opponent, ATK is increased §912%%/15%%/18%%/21%%/24%%§o§7 by for 30s.
+keletu.genshinweaponry.blackcliff_longsword.tooltip2=This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.
+
+keletu.genshinweaponry.cold_steel.name=Bane of Water and Ice
+keletu.genshinweaponry.cold_steel.tooltip1=Increases DMG against opponents affected by Water or Cold by §912%%/15%%/18%%/21%%/24%%§o§7
+
+keletu.genshinweaponry.dark_iron_sword.name=Overloaded
+keletu.genshinweaponry.dark_iron_sword.tooltip1=Upon dealing a hit while having redstone dust in inventory, ATK increased §920%%§o§7 by for 12s and dust consumed.
+
+keletu.genshinweaponry.favonius_sword.name=Windfall
+keletu.genshinweaponry.favonius_sword.tooltip1=CRIT hits have a §960%%/70%%/80%%/90%%/100%%§o§7 chance to generate a small amount of Exp Particles
+keletu.genshinweaponry.favonius_sword.tooltip2=Can only occur once every §912/10.5/9/7.5/6s§o§7
+
+keletu.genshinweaponry.fillet_blade.name=Gash
+keletu.genshinweaponry.fillet_blade.tooltip1=On hit, has 50%% chance to deal §9240%%/280%%/320%%/360%%/400%%§o§7 ATK DMG to a single enemy.
+keletu.genshinweaponry.fillet_blade.tooltip2=Can only occur once every §924/22/20/18/16s§o§7.
+
+keletu.genshinweaponry.harbinger_of_dawn.name=Vigorous
+keletu.genshinweaponry.harbinger_of_dawn.tooltip1=When HP is above 90%%,
+keletu.genshinweaponry.harbinger_of_dawn.tooltip2=has chance §914%%/17.5%%/21%%/24.5%%/28%%§o§7 to deal §918%%/22.5%%/27%%/31.5%%/36%%§o§7 more damage
+
+keletu.genshinweaponry.lions_roar.name=Bane of Fire and Thunder
+keletu.genshinweaponry.lions_roar.tooltip1=Increases DMG against enemies affected by Fire or Heat by §920%%/24%%/28%%/32%%/36%%§o§7.
+
+keletu.genshinweaponry.prototype_rancour.name=Smashed Stone
+keletu.genshinweaponry.prototype_rancour.tooltip1=On hit, Normal or Strong or Critical Attacks increase ATK §94%%/5%%/6%%/7%%/8%%§o§7 for 6s.
+keletu.genshinweaponry.prototype_rancour.tooltip2=Max 4 stacks. Can only occur every 0.7s.
+
+keletu.genshinweaponry.royal_sword.name=Focus
+keletu.genshinweaponry.royal_sword.tooltip1=Upon dealing damage to an opponent, increases CRIT hit ATK DMG by §98%%/10%%/12%%/14%%/16%%§o§7
+keletu.genshinweaponry.royal_sword.tooltip2=Max 5 stacks. A CRIT hit removes all existing stacks.
+
+keletu.genshinweaponry.sword_of_descension.name=Descension
+keletu.genshinweaponry.sword_of_descension.tooltip1=Hitting enemies with Normal or Charged Attacks grants a §950%%§o§7 chance to deal §9200%%§o§7 ATK as DMG in a small AoE.
+keletu.genshinweaponry.sword_of_descension.tooltip2=This effect can only occur once every 10s.
+
+keletu.genshinweaponry.the_alley_flash.name=Itinerant Hero
+keletu.genshinweaponry.the_alley_flash.tooltip1=Increases DMG dealt by the player equipping this weapon by §912%%/15%%/18%%/21%%/24%%§o§7.
+keletu.genshinweaponry.the_alley_flash.tooltip2=Taking DMG disables this effect even if not held for 5s.
+
+keletu.genshinweaponry.the_black_sword.name=Justice
+keletu.genshinweaponry.the_black_sword.tooltip1=Increases DMG dealt by Normal and Charged Attacks by §920%%/25%%/30%%/35%%/40%%§o§7.
+keletu.genshinweaponry.the_black_sword.tooltip2=Additionally, regenerates §960%%/70%%/80%%/90%%/100%%§o§7 of ATK as HP when deal a CRIT Hit.
+keletu.genshinweaponry.the_black_sword.tooltip3=This effect can occur once every 12s.
+
+keletu.genshinweaponry.the_flute.name=Chord
+keletu.genshinweaponry.the_flute.tooltip1=Normal,Strong and Critical Attacks, grant a Harmonics on hit.
+keletu.genshinweaponry.the_flute.tooltip2=Gaining 5 Harmonics triggers the power of music
+keletu.genshinweaponry.the_flute.tooltip3=and deals §9100%%/125%%/150%%/175%%/200%%§o§7 ATK DMG to surrounding enemies.
+keletu.genshinweaponry.the_flute.tooltip4=Harmonics can be obtained only once in 1.5s.
+
+keletu.genshinweaponry.traveler_handy_sword.name=Journey
+keletu.genshinweaponry.traveler_handy_sword.tooltip1=Each Exp Orb or Particle collected restores §91/1.25/1.5/1.75/2§o§7 HP.

@@ -1,6 +1,0 @@
-{
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "genshin_weapons:items/travelers_handy_sword"
-  }
-}

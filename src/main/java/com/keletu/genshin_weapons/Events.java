@@ -57,7 +57,7 @@ public class Events {
          //   ItemStack stack = player.getHeldItemMainhand();
          //
          //   if (playerVariables != null && stack.getItem() == CommonProxy.SkyriderSword && player.experienceLevel != getPlayerLevel(player) && playerVariables.skyrider_ab_dur == 0) {
-         //       double s = /*1.024*/2 + 0.006 * CommonProxy.SkyriderSword.getTier();
+         //       double s = /*1.024*/2 + 0.006 * CommonProxy.SkyriderSword.getTier(stack);
          //       if(playerVariables.skyrider_ab_dur > 0)
          //           player.setVelocity(s * player.motionX, s * player.motionY, s * player.motionZ);
          //       playerVariables.skyrider_ab_dur = 300;
@@ -91,7 +91,7 @@ public class Events {
         EntityPlayer player = event.getEntityPlayer();
         if(player.getHeldItemMainhand().getItem() == CommonProxy.TravelerHandySword)
         {
-            player.heal(1 + (float) (CommonProxy.TravelerHandySword.getTier() - 1) / 4);
+            player.heal(1 + (float) (CommonProxy.TravelerHandySword.getTier(player.getHeldItemMainhand()) - 1) / 4);
         }
     }
     @SubscribeEvent
@@ -115,29 +115,29 @@ public class Events {
             if(playerVariables.blackcliff_st3 > 0)
                 i += 1;
 
-            event.setAmount((float) (event.getAmount() + event.getAmount() * i * 0.12 * ((CommonProxy.BlackcliffLongsword.getTier() + 3) / 4)));
+            event.setAmount(event.getAmount() + (float) (event.getAmount() * i * 0.12 * ((CommonProxy.BlackcliffLongsword.getTier(stack) + 3) / 4)));
         }
 
-        if(stack.getItem() == CommonProxy.HarbingerOfDawn && player.getHealth() / player.getMaxHealth() > 0.9 && player.getEntityWorld().rand.nextInt(100) < 14 * ((CommonProxy.HarbingerOfDawn.getTier() +3) / 4))
+        if(stack.getItem() == CommonProxy.HarbingerOfDawn && player.getHealth() / player.getMaxHealth() > 0.9 && player.getEntityWorld().rand.nextInt(100) < 14 * ((CommonProxy.HarbingerOfDawn.getTier(stack) +3) / 4))
         {
-            event.setAmount((float) (event.getAmount() * (1 + 0.18 * (1 + (CommonProxy.HarbingerOfDawn.getTier() - 1) / 4))));
+            event.setAmount(event.getAmount() * (float) ((1 + 0.18 * (1 + (CommonProxy.HarbingerOfDawn.getTier(stack) - 1) / 4))));
         }
 
         if(stack.getItem() == CommonProxy.FilletBlade && player.getEntityWorld().rand.nextInt(100) < 50 && playerVariables.ability_cd == 0)
         {
-            event.setAmount((float) (event.getAmount() * (2.4 + 0.4  * (CommonProxy.FilletBlade.getTier() - 1))));
-            GenshinWeaponry.getInstance().get(player).ability_cd = 3 * (480 - (CommonProxy.FilletBlade.getTier() - 1) * 40);
+            event.setAmount(event.getAmount() * (float) ((2.4 + 0.4  * (CommonProxy.FilletBlade.getTier(stack) - 1))));
+            GenshinWeaponry.getInstance().get(player).ability_cd = 3 * (480 - (CommonProxy.FilletBlade.getTier(stack) - 1) * 40);
             playerVariables.ability_cd = 480;
         }
 
-        if(stack.getItem() == CommonProxy.ColdSteel && (player.getEntityWorld().getBiome(player.getPosition()).isSnowyBiome() || event.getEntity().isWet()))
+        if(stack.getItem() == CommonProxy.ColdSteel && ((player.getEntityWorld().getBiome(player.getPosition()).isSnowyBiome() || event.getEntity().isWet())))
         {
-            event.setAmount((float) (event.getAmount() + event.getAmount() * (0.12 * ((CommonProxy.HarbingerOfDawn.getTier() +3 ) / 4))));
+            event.setAmount(event.getAmount() + (float) (event.getAmount() * (0.12 * ((CommonProxy.HarbingerOfDawn.getTier(stack) +3 ) / 4))));
         }
 
-        if(stack.getItem() == CommonProxy.LionsRoar && (player.getEntityWorld().getBiome(player.getPosition()).getTemperature(player.getPosition()) > 1.0) || event.getEntity().isBurning() || event.getEntity().isInLava())
+        if(stack.getItem() == CommonProxy.LionsRoar && (player.getEntityWorld().getBiome(player.getPosition()).getTemperature(player.getPosition()) > 1.0 || event.getEntity().isBurning() || event.getEntity().isInLava()))
         {
-            event.setAmount((float) (event.getAmount() * event.getAmount() * (0.16 + CommonProxy.HarbingerOfDawn.getTier() * 0.04)));
+            event.setAmount(event.getAmount() * (float) (event.getAmount() * (0.16 + CommonProxy.HarbingerOfDawn.getTier(stack) * 0.04)));
         }
 
         if(stack.getItem() == CommonProxy.PrototypeRancour)
@@ -148,7 +148,7 @@ public class Events {
                 playerVariables.prototype_rancour_stack += 1;
             }
 
-            event.setAmount((float) (event.getAmount() + event.getAmount() * playerVariables.prototype_rancour_stack * (0.04 * ((CommonProxy.PrototypeRancour.getTier() +3 ) / 4))));
+            event.setAmount(event.getAmount() + (float) (event.getAmount() * playerVariables.prototype_rancour_stack * (0.04 * ((CommonProxy.PrototypeRancour.getTier(stack) +3 ) / 4))));
             playerVariables.prototype_rancour_dur = 120;
         }
 
@@ -163,7 +163,7 @@ public class Events {
         if(stack.getItem() == CommonProxy.DarkIronSword && playerVariables.dark_iron_sword_ab_dur > 0)
             event.setAmount((float) (event.getAmount() * 1.2));
 
-        if(stack.getItem() == CommonProxy.FavoniusSword && player.getEntityWorld().rand.nextInt(110 - 10 * CommonProxy.FavoniusSword.getTier()) < 60 && playerVariables.ability_cd == 0 && !player.onGround && !player.isInWater())
+        if(stack.getItem() == CommonProxy.FavoniusSword && player.getEntityWorld().rand.nextInt(110 - 10 * CommonProxy.FavoniusSword.getTier(stack)) < 60 && playerVariables.ability_cd == 0 && !player.onGround && !player.isInWater())
         {
             if(!player.getEntityWorld().isRemote)
             {
@@ -201,15 +201,15 @@ public class Events {
 
         if(stack.getItem() == CommonProxy.TheAlleyFlesh && playerVariables.ability_cd == 0)
         {
-            event.setAmount((float) (event.getAmount() + event.getAmount() * 0.12 * (CommonProxy.TheAlleyFlesh.getTier()+ 3) / 4));
+            event.setAmount((event.getAmount() + (float) (event.getAmount() * 0.12 * (CommonProxy.TheAlleyFlesh.getTier(stack)+ 3) / 4)));
             if(event.getEntityLiving() == player)
                 playerVariables.ability_cd = 100;
         }
 
         if(stack.getItem() == CommonProxy.TheBlackSword)
         {
-            event.setAmount((float) (event.getAmount() + event.getAmount() * 0.2 * (CommonProxy.TheBlackSword.getTier()+ 3) / 4));
-            if(player.getEntityWorld().rand.nextInt(110 - 10 * CommonProxy.TheBlackSword.getTier()) < 60 && playerVariables.ability_cd == 0) {
+            event.setAmount((float) (event.getAmount() + event.getAmount() * 0.2 * (CommonProxy.TheBlackSword.getTier(stack)+ 3) / 4));
+            if(player.getEntityWorld().rand.nextInt(110 - 10 * CommonProxy.TheBlackSword.getTier(stack)) < 60 && playerVariables.ability_cd == 0) {
                 player.heal((float) (event.getAmount() * 0.6));
                 playerVariables.ability_cd = 240;
             }
@@ -221,7 +221,7 @@ public class Events {
                 playerVariables.royal_stacks += 1;
             if(!player.onGround && !player.isInWater() && playerVariables.royal_stacks > 0)
             {
-                event.setAmount((float) (event.getAmount() + event.getAmount() * 0.08 * (CommonProxy.TheBlackSword.getTier()+ 3) / 4 * playerVariables.royal_stacks));
+                event.setAmount(event.getAmount() + (float) (event.getAmount() * 0.08 * (CommonProxy.TheBlackSword.getTier(stack)+ 3) / 4 * playerVariables.royal_stacks));
                 playerVariables.royal_stacks = 0;
             }
         }
@@ -234,13 +234,21 @@ public class Events {
                 playerVariables.the_flute_ab_dur = 30;
             }
 
-            Vec3d vec3d = new Vec3d(player.posX, player.posY, player.posZ);
-            List<Entity> entities = player.getEntityWorld().getEntitiesWithinAABB(Entity.class, (new AxisAlignedBB(vec3d, vec3d)).grow(4.5D), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.getDistanceSqToCenter(new BlockPos(player.posX, player.posY, player.posZ)))).collect(Collectors.toList());
-            for (Entity entityiterator : entities)
-            {
-                if(entityiterator != player)
-                    entityiterator.attackEntityFrom(DamageSource.MAGIC, event.getAmount() * (CommonProxy.TheFlute.getTier()+ 3) / 4);
-                player.world.spawnParticle(EnumParticleTypes.NOTE, player.posX, player.posY, player.posZ, 2.0, 2.0, 2.0, 6);
+            if(playerVariables.the_flute_ab_stack == 5) {
+                Vec3d vec3d = new Vec3d(player.posX, player.posY, player.posZ);
+                List<Entity> entities = player.getEntityWorld().getEntitiesWithinAABB(Entity.class, (new AxisAlignedBB(vec3d, vec3d)).grow(4.5D), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.getDistanceSqToCenter(new BlockPos(player.posX, player.posY, player.posZ)))).collect(Collectors.toList());
+                for (Entity entityiterator : entities) {
+                    if (entityiterator != player)
+                        entityiterator.attackEntityFrom(DamageSource.MAGIC, event.getAmount() * (CommonProxy.TheFlute.getTier(stack) + 3) / 4);
+                    for (int i = 0; i < 10; i++) {
+                        double dx = (player.posX + 0.5F + (player.world.rand.nextFloat() - player.world.rand.nextFloat()) * 0.75F);
+                        double dy = (player.posY + 0.5F + (player.world.rand.nextFloat() - player.world.rand.nextFloat()) * 0.75F);
+                        double dz = (player.posZ + 0.5F + (player.world.rand.nextFloat() - player.world.rand.nextFloat()) * 0.75F);
+
+                        player.world.spawnParticle(EnumParticleTypes.NOTE, dx, dy, dz, 0.0D, 0.0D, 0.0D);
+                    }
+                }
+                playerVariables.the_flute_ab_stack = 0;
             }
         }
     }
