@@ -246,15 +246,16 @@ public class Events {
                     if (entityiterator != player) {
                         entityiterator.attackEntityFrom(DamageSource.MAGIC, event.getAmount() * (CommonProxy.TheFlute.getTier(stack) + 3) / 4);
 
-                        for (int l = 0; l < 15; l++) {
-                            double d = event.getEntity().posX + (player.world.rand.nextFloat() - 0.5D) * 6.0D;
-                            double d1 = event.getEntity().posY + (player.world.rand.nextFloat() - 0.5D) * 6.0D;
-                            double d2 = event.getEntity().posZ + (player.world.rand.nextFloat() - 0.5D) * 6.0D;
-                            double d3 = (player.world.rand.nextFloat() - 0.5D) * 0.5D;
-                            double d4 = (player.world.rand.nextFloat() - 0.5D) * 0.5D;
-                            double d5 = (player.world.rand.nextFloat() - 0.5D) * 0.5D;
-                            ParticleNote entityPurpleFX = new ParticleNote(player.world, d, d1, d2, d3, d4, d5);
-                            (FMLClientHandler.instance().getClient()).effectRenderer.addEffect(entityPurpleFX);
+                        if(player.world.isRemote)
+                            for (int l = 0; l < 15; l++) {
+                                double d = event.getEntity().posX + (player.world.rand.nextFloat() - 0.5D) * 6.0D;
+                                double d1 = event.getEntity().posY + (player.world.rand.nextFloat() - 0.5D) * 6.0D;
+                                double d2 = event.getEntity().posZ + (player.world.rand.nextFloat() - 0.5D) * 6.0D;
+                                double d3 = (player.world.rand.nextFloat() - 0.5D) * 0.5D;
+                                double d4 = (player.world.rand.nextFloat() - 0.5D) * 0.5D;
+                                double d5 = (player.world.rand.nextFloat() - 0.5D) * 0.5D;
+                                ParticleNote entityPurpleFX = new ParticleNote(player.world, d, d1, d2, d3, d4, d5);
+                                (FMLClientHandler.instance().getClient()).effectRenderer.addEffect(entityPurpleFX);
                         }
                     }
                 }
